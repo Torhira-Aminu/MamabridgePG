@@ -209,6 +209,9 @@ nav{background:var(--purple);padding:0 16px;display:flex;align-items:center;just
   .chat-fab{right:12px;bottom:14px;}
 }
 </style>
+<!-- [pipeline add-on] -->
+<script src="zip_summary.js"></script>
+<script src="zip-coverage.js"></script>
 </head>
 <body>
 
@@ -559,6 +562,9 @@ nav{background:var(--purple);padding:0 16px;display:flex;align-items:center;just
         <div class="nutr-tip">💡 <span>WIC covers baby food &amp; cereal for infants 6–12 months. Use all your WIC benefits!</span></div>
       </div>
     </div>
+
+    <!-- [pipeline add-on] ZIP resource counts from the AWS pipeline -->
+    <div id="zipCoverage"></div>
 
     <!-- Resource Tabs -->
     <div class="section-title">📋 Resources For You</div>
@@ -1037,6 +1043,7 @@ function showDashboard() {
   document.getElementById('quoteText').textContent = q.text;
   document.getElementById('quoteAuthor').textContent = q.author;
 
+  if (window.MamaCareZipCoverage) MamaCareZipCoverage.render(userData.zip); // [pipeline add-on]
   showScreen('dashScreen');
 }
 
